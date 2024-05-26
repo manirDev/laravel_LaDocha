@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*---------------------FRONTEND PAGES ROUTES START--------------------------------------*/
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+/*---------------------FRONTEND PAGES ROUTES END--------------------------------------*/
 
-/**----------------------ADMIN ROUTES--------------------------------------*/
+/*---------------------ADMIN ROUTES START--------------------------------------*/
 //auth starts
 Route::middleware([])->prefix('admin')->group(function(){
     //admin starts
@@ -39,6 +40,8 @@ Route::middleware([])->prefix('admin')->group(function(){
     });//admin ends
 
 });//auth ends
+
+/*---------------------ADMIN ROUTES END--------------------------------------*/
 
 Route::get('/test', function (){
     return "Hello Babe";
