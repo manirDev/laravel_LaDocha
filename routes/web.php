@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +17,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+/**----------------------ADMIN ROUTES--------------------------------------*/
+//auth starts
+Route::middleware([])->prefix('admin')->group(function(){
+    //admin starts
+    Route::middleware([])->group(function(){
+
+        #ADMIN HOME ROUTE
+        Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+
+        #CATEGORY ROUTES
+        #PRODUCT ROUTES
+        #IMAGE ROUTES
+        #MESSAGES ROUTES
+        #FAQ ROUTES
+        #SETTING ROUTES
+
+    });//admin ends
+
+});//auth ends
+
+Route::get('/test', function (){
+    return "Hello Babe";
 });
 
 Route::middleware([
