@@ -41,6 +41,9 @@ Route::middleware([])->prefix('admin')->group(function(){
 
 });//auth ends
 
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::get('/admin/loginCheck', [AdminController::class, 'loginCheck'])->name('admin.loginCheck');
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 /*---------------------ADMIN ROUTES END--------------------------------------*/
 
 Route::get('/test', function (){

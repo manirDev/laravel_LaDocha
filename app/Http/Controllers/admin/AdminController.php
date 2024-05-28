@@ -12,4 +12,16 @@ class AdminController extends Controller
         //dd("is it working");
         return view('admin.index');
     }
+
+    public function login()
+    {
+        return view('admin.login.login');
+    }
+    public function loginCheck(Request $request)
+    {
+        return "Hellooooo";
+    }
+    public function logout(){
+        return view('admin.login.login');
+    }
 }
