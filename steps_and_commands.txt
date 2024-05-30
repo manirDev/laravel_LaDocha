@@ -1,0 +1,9 @@
+
+1- php artisan make:model Category -m #will be created with migration files
+2-Go to migrate file and add table fields
+3-php artisan make:migration Category
+4-php artisan migrate
+
+
+5- php artisan make:controller admin\CategoryController --resource #will be created with CRUD functions
+6- Create Route in admin group or other.

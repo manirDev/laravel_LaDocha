@@ -112,7 +112,9 @@
                             <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
                             <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+                            @Auth
+                                <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+                            @endauth
                         </li>
                     </ul>
                 </li>
