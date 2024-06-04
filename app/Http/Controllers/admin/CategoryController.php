@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Image;
 class CategoryController extends Controller
 {
     /**
@@ -17,7 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = DB::table('categories')->get();
-        return view('admin.category.index', ['categories' => $categories]);
+        $dataList = DB::table('categories')->get()->where('parent_id', 0);
+        return view('admin.category.index', ['categories' => $categories, 'dataList' => $dataList]);
     }
 
     /**
@@ -25,9 +26,49 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function add(Request $request){
+
+    }
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            //'brand_name' => 'required|unique:brands,brand_name',
+            'title' => 'required',
+            'parent_id' => 'required',
+            'keywords' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+            'title.required' => 'Please enter category title',
+            'parent_id.required' => 'Please select category parent',
+            'keywords.required' => 'Please enter keywords',
+            'image.required' => 'Please upload category image',
+       ]);
+
+        //handle image upload
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(300,300)->save('upload/category/'.$name_gen);
+        $save_url = 'upload/category/'.$name_gen;
+
+        //save to the database
+        Category::insert([
+            'title' => $request->title,
+            'parent_id' => $request->parent_id,
+            'keywords' => $request->keywords,
+            'description' => $request->description,
+            'slug' => strtolower(str_replace(' ', '-', $request->title)),
+            'image' => $save_url,
+            'status' => $request->status,
+        ]);
+
+        //toast message
+        $notification = array(
+            'message' => 'Category Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 
     /**
