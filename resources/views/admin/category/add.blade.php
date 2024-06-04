@@ -55,6 +55,10 @@
                         @error('image')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
+                        {{-- Image preview section --}}
+                        <div class="mt-3">
+                            <img id="imagePreview" src="#" alt="Selected Image" style="display: none; width: 100px; height: 100px">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">

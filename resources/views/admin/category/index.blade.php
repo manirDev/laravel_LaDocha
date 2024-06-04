@@ -32,7 +32,7 @@
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->description}}</td>
                                             <td>
-                                                <a href="" class="btn btn-info">Edit</a>
+                                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-center">Edit</a>
                                                 <a href="" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
@@ -53,7 +53,14 @@
                 <!-- /.col -->
 
             </div>
+
+            <!-- Modal -->
+            <div class="modal center-modal fade" id="modal-center" tabindex="-1">
+                @include('admin.category.edit')
+            </div>
+            <!-- /.modal -->
             <!-- /.row -->
+
         </section>
         <!-- /.content -->
 

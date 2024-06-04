@@ -55,6 +55,28 @@
 <script src="{{asset('backend/js/template.js')}}"></script>
 <script src="{{asset('backend/js/pages/dashboard.js')}}"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('customFile').addEventListener('change', function(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('imagePreview');
+                output.src = reader.result;
+                output.style.display = 'block';
+                console.log("Image preview updated"); // Debugging line
+            };
+            reader.onerror = function() {
+                console.error("An error occurred while reading the file");
+            };
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+                console.log("File selected: " + event.target.files[0].name); // Debugging line
+            } else {
+                console.log("No file selected"); // Debugging line
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
