@@ -16,7 +16,10 @@
     <!-- Style-->
     <link rel="stylesheet" href="{{asset('backend')}}/css/style.css">
     <link rel="stylesheet" href="{{asset('backend')}}/css/skin_color.css">
-
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -54,29 +57,65 @@
 <!-- Sunny Admin App -->
 <script src="{{asset('backend/js/template.js')}}"></script>
 <script src="{{asset('backend/js/pages/dashboard.js')}}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.getElementById('customFile').addEventListener('change', function(event) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                var output = document.getElementById('imagePreview');
-                output.src = reader.result;
-                output.style.display = 'block';
-                console.log("Image preview updated"); // Debugging line
-            };
-            reader.onerror = function() {
-                console.error("An error occurred while reading the file");
-            };
-            if (event.target.files[0]) {
-                reader.readAsDataURL(event.target.files[0]);
-                console.log("File selected: " + event.target.files[0].name); // Debugging line
-            } else {
-                console.log("No file selected"); // Debugging line
-            }
-        });
-    });
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+    @endif
 </script>
 
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch(type){
+        case 'info':
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: "{{ Session::get('message') }}"
+            });
+            break;
+        case 'success':
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ Session::get('message') }}"
+            });
+            break;
+        case 'warning':
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: "{{ Session::get('message') }}"
+            });
+            break;
+        case 'error':
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ Session::get('message') }}"
+            });
+            break;
+    }
+    @endif
+</script>
+
+@yield('js')
 </body>
 </html>

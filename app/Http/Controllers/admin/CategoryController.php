@@ -102,6 +102,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::findOrFail($id);
+        return response()->json($category);
     }
 
     /**
@@ -114,6 +116,54 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $oldImg = $request->oldImg;
+       //dd($oldImg);
+        //dd($request->title);
+        if ($request->hasFile('image')) {
+            //delete old image
+            if ($oldImg != null){
+                unlink($oldImg);
+            }
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(300,300)->save('upload/category/'.$name_gen);
+            $save_url = 'upload/category/'.$name_gen;
+
+            //save to the database
+            Category::findOrFail($id)->update([
+                'title' => $request->title,
+                'parent_id' => $request->parent_id,
+                'keywords' => $request->keywords,
+                'description' => $request->description,
+                'slug' => strtolower(str_replace(' ', '-', $request->title)),
+                'image' => $save_url,
+                'status' => $request->status,
+            ]);
+
+            //toast message
+            $notification = array(
+                'message' => 'Category Updated Successfully',
+                'alert-type' => 'info'
+            );
+        }
+        else{
+            //save to the database
+            Category::findOrFail($id)->update([
+                'title' => $request->title,
+                'parent_id' => $request->parent_id,
+                'keywords' => $request->keywords,
+                'description' => $request->description,
+                'slug' => strtolower(str_replace(' ', '-', $request->title)),
+                'status' => $request->status,
+            ]);
+
+            //toast message
+            $notification = array(
+                'message' => 'Category Updated Successfully',
+                'alert-type' => 'info'
+            );
+        }
+        return Redirect()->back()->with($notification);
     }
 
     /**
@@ -124,6 +174,17 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $image_path = $category->image;
+
+        // Delete the image file if it exists
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+
+        // Delete the category record
+        $category->delete();
+
+        return response()->json(['success' => true, 'message' => 'Category deleted successfully.']);
     }
 }

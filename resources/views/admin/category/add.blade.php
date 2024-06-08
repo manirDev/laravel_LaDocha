@@ -57,7 +57,7 @@
                         @enderror
                         {{-- Image preview section --}}
                         <div class="mt-3">
-                            <img id="imagePreview" src="#" alt="Selected Image" style="display: none; width: 100px; height: 100px">
+                            <img id="imagePreview" src="#" alt="Selected Image" style="display: none; width: 100px; height: 70px; border-radius:5px;">
                         </div>
                     </div>
                 </div>
