@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,15 +33,27 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('/', [AdminController::class, 'index'])->name('admin.home');
 
         #CATEGORY ROUTES
-        Route::get('category', [CategoryController::class, 'index'])->name('admin.category');
-        Route::get('category/add', [CategoryController::class, 'add'])->name('admin.category.add');
-        Route::post('category/create', [CategoryController::class, 'create'])->name('admin.category.create');
-        Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-        Route::post('category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
-        Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])->name('admin.category.delete');
-        Route::post('category/show/{id}', [CategoryController::class, 'show'])->name('admin.category.show');
+        Route::prefix('category')->group(function(){
+            Route::get('/', [CategoryController::class, 'index'])->name('admin.category');
+            Route::get('add', [CategoryController::class, 'add'])->name('admin.category.add');
+            Route::post('create', [CategoryController::class, 'create'])->name('admin.category.create');
+            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+            Route::post('update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+            Route::delete('delete/{id}', [CategoryController::class, 'destroy'])->name('admin.category.delete');
+            Route::post('show/{id}', [CategoryController::class, 'show'])->name('admin.category.show');
+        });
 
         #PRODUCT ROUTES
+        Route::prefix('product')->group(function (){
+            Route::get('/', [ProductController::class, 'index'])->name('admin.product');
+            Route::get('add', [ProductController::class, 'add'])->name('admin.product.add');
+            Route::get('create', [ProductController::class, 'create'])->name('admin.product.create');
+            Route::post('store', [ProductController::class, 'store'])->name('admin.product.store');
+            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
+            Route::post('update/{id}', [ProductController::class, 'update'])->name('admin.product.update');
+            Route::delete('delete/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
+            Route::get('show', [ProductController::class, 'show'])->name('admin.product.show');
+        });
         #IMAGE ROUTES
         #MESSAGES ROUTES
         #FAQ ROUTES

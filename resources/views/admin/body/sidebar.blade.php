@@ -1,3 +1,10 @@
+
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+    //dd($route);
+@endphp
+
 <aside class="main-sidebar">
     <!-- sidebar-->
     <section class="sidebar">
@@ -17,14 +24,14 @@
         <!-- sidebar menu-->
         <ul class="sidebar-menu" data-widget="tree">
 
-            <li>
-                <a href="{{route('admin.home')}}">
+            <li class=" {{ ($route == 'admin.home') ? 'active' : '' }} ">
+                <a href="{{url('admin')}}">
                     <i data-feather="pie-chart"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ ($prefix == '/category') ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
                     <span>Categories</span>
@@ -33,22 +40,23 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('admin.category')}}"><i class="ti-more"></i>All Categories</a></li>
-                    <li><a href="calendar.html"><i class="ti-more"></i>Calendar</a></li>
+                    <li class="{{ ($route == 'admin.category') ? 'active' : '' }}">
+                        <a href="{{route('admin.category')}}"><i class="ti-more"></i>All Categories</a>
+                    </li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ ($prefix == '/product') ? 'active' : '' }}">
                 <a href="#">
-                    <i data-feather="mail"></i> <span>Mailbox</span>
+                    <i data-feather="mail"></i> <span>Products</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Inbox</a></li>
-                    <li><a href="mailbox_compose.html"><i class="ti-more"></i>Compose</a></li>
-                    <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li>
+                    <li class="{{ ($route == 'admin.product') ? 'active' : '' }}">
+                        <a href="{{route('admin.product')}}"><i class="ti-more"></i>All Products</a>
+                    </li>
                 </ul>
             </li>
 
