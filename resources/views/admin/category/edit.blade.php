@@ -59,6 +59,9 @@
                                                         <option value={{$item->id}}>{{$item->title}}</option>
                                                     @endforeach
                                                 </select>
+                                                @error('keywords')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>

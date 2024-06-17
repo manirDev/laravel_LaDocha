@@ -57,6 +57,9 @@
                     <li class="{{ ($route == 'admin.product') ? 'active' : '' }}">
                         <a href="{{route('admin.product')}}"><i class="ti-more"></i>All Products</a>
                     </li>
+                    <li class="{{ ($route == 'admin.product.add') ? 'active' : '' }}">
+                        <a href="{{route('admin.product.add')}}"><i class="ti-more"></i>Add Product</a>
+                    </li>
                 </ul>
             </li>
 

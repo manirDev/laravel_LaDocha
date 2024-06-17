@@ -5,11 +5,16 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-8">
+                <div class="col-12">
 
                     <div class="box">
-                        <div class="box-header with-border">
+                        <div class="box-header with-border d-flex justify-content-between">
                             <h3 class="box-title">Product List</h3>
+                            <a href="{{route('admin.product.add')}}">
+                                <button type="submit" class="btn btn-rounded btn-primary btn-outline">
+                                    <i class="ti-save-alt"></i> Add Product
+                                </button>
+                            </a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -19,7 +24,8 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Title</th>
-                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -32,7 +38,8 @@
                                                 @endif
                                             </td>
                                             <td>{{$item->title}}</td>
-                                            <td>{{$item->description}}</td>
+                                            <td>{{$item->price}}</td>
+                                            <td>{{$item->quantity}}</td>
                                             <td>
                                                 <a href="#" class="btn btn-info edit-btn" data-id="{{ $item->id }}">Edit</a>
                                                 <a href="" class="btn btn-danger delete-btn" data-id="{{ $item->id }}">Delete</a>
@@ -49,16 +56,10 @@
                 </div>
                 <!-- /.col -->
 
-                <div class="col-4">
-                    @include('admin.category.add')
-                </div>
-                <!-- /.col -->
-
             </div>
-
             <!-- Modal -->
             <div class="modal fade bs-example-modal-lg" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                @include('admin.category.edit')
+                @include('admin.product.edit')
             </div>
             <!-- /.modal -->
             <!-- /.row -->
@@ -95,7 +96,6 @@
 
             // Apply the image preview functionality to the image element
             handleImagePreview('customFile', 'imagePreview');
-            handleImagePreview('customFile1', 'imagePreview1');
         });
 
         /*----------------Edit Script--------------*/
@@ -125,23 +125,28 @@
                         // Update the form action and populate form fields
                         $('#editForm').attr('action', '/admin/product/update/' + id);
                         $('#title').val(data.title);
+                        $('#category_id').val(data.category_id);
                         $('#keywords').val(data.keywords);
                         $('#description').val(data.description);
-                        $('#parent_id').val(data.parent_id);
+                        $('#detail').val(data.detail);
+                        $('#price').val(data.price);
+                        $('#quantity').val(data.quantity);
+                        $('#minquantity').val(data.minquantity);
+                        $('#tax').val(data.tax);
                         $('#status').val(data.status);
                         $('#id').val(data.id);
                         $('#oldImg').val(data.image);
 
                         // Show the category image if available
                         if (data.image) {
-                            $('#categoryImage').attr('src', "{{ asset('') }}" + data.image).css('display', 'inline-block');
+                            $('#productImage').attr('src', "{{ asset('') }}" + data.image).css('display', 'inline-block');
                         } else {
-                            $('#categoryImage').hide();
+                            $('#productImage').hide();
                         }
 
                         // Set the modal title and category name
-                        $('#categoryTitle').text(data.title);
-                        $('#categoryName').text(data.title);
+                        $('#productTitle').text(data.title);
+                        $('#productName').text(data.title);
 
                         // Show the modal
                         $('#editModal').modal('show');
@@ -177,7 +182,7 @@
                                     if(response.success) {
                                         Swal.fire(
                                             'Deleted!',
-                                             'Category has been deleted.',
+                                            'Product has been deleted.',
                                             'success'
                                         );
                                         // Remove the deleted row from the table
@@ -185,7 +190,7 @@
                                     } else {
                                         Swal.fire(
                                             'Error!',
-                                            'There was an error deleting the category.',
+                                            'There was an error deleting the product.',
                                             'error'
                                         );
                                     }
