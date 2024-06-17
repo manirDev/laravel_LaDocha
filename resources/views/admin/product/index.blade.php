@@ -26,6 +26,7 @@
                                         <th>Title</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -40,6 +41,7 @@
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->price}}</td>
                                             <td>{{$item->quantity}}</td>
+                                            <td>{{$item->status}}</td>
                                             <td>
                                                 <a href="#" class="btn btn-info edit-btn" data-id="{{ $item->id }}">Edit</a>
                                                 <a href="" class="btn btn-danger delete-btn" data-id="{{ $item->id }}">Delete</a>

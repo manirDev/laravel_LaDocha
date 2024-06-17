@@ -5,5 +5,5 @@
 4-php artisan migrate
 
 
-5- php artisan make:controller admin\CategoryController --resource #will be created with CRUD functions
+5- php artisan make:controller admin/CategoryController --resource #will be created with CRUD functions
 6- Create Route in admin group or other.

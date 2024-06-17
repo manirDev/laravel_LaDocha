@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,13 @@ Route::middleware('auth')->prefix('admin')->group(function(){
             Route::get('show', [ProductController::class, 'show'])->name('admin.product.show');
         });
         #IMAGE ROUTES
+        Route::prefix('image')->group(function (){
+            Route::get('create/{product_id}', [ImageController::class, 'create'])->name('admin.image.add');
+            Route::post('store/{product_id}', [ImageController::class, 'store'])->name('admin.image.store');
+            Route::get('delete/{id}', [ImageController::class, 'destroy'])->name('admin.image.delete');
+            Route::get('show', [ImageController::class, 'show'])->name('admin.image.show');
+        });
+
         #MESSAGES ROUTES
         #FAQ ROUTES
         #SETTING ROUTES
