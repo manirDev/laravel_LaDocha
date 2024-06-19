@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,11 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         #MESSAGES ROUTES
         #FAQ ROUTES
         #SETTING ROUTES
+        Route::prefix('setting')->group(function (){
+            Route::get('/', [SettingController::class, 'index'])->name('admin.setting');
+            Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
+        });
+
 
     });//admin role ends
 
