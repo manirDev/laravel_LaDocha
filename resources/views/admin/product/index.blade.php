@@ -43,6 +43,7 @@
                                             <td>{{$item->quantity}}</td>
                                             <td>{{$item->status}}</td>
                                             <td>
+                                                <a href="{{route('admin.image.add', ['product_id'=>$item->id])}}" class="btn btn-success edit-btn" >Gallery</a>
                                                 <a href="#" class="btn btn-info edit-btn" data-id="{{ $item->id }}">Edit</a>
                                                 <a href="" class="btn btn-danger delete-btn" data-id="{{ $item->id }}">Delete</a>
                                             </td>
