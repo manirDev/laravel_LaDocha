@@ -69,7 +69,7 @@
 
             <li class="header nav-small-cap">Others</li>
 
-            <li class="treeview">
+            <li class="treeview {{ ($prefix == '/faq') ? 'active' : '' }}">
                 <a href="#">
                     <i class="ti-help"></i>
                     <span>Faqs</span>
@@ -78,7 +78,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="ti-more"></i>All Faqs</a></li>
+                    <li class="{{ ($route == 'admin.faq') ? 'active' : '' }}">
+                        <a href="{{route('admin.faq')}}"><i class="ti-more"></i>All Faqs</a>
+                    </li>
                 </ul>
             </li>
 
@@ -91,7 +93,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="ti-more"></i>All Messages</a></li>
+                    <li >
+                        <a href="#"><i class="ti-more"></i>All Messages</a>
+                    </li>
                 </ul>
             </li>
 

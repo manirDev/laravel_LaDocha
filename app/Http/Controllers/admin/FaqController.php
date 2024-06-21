@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FaqController extends Controller
 {
@@ -14,6 +15,12 @@ class FaqController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        $faqs= DB::table('faqs')->get();
+        return view('admin.faq.index', ['faqs' => $faqs]);
+    }
+
+    public function add()
     {
         //
     }
@@ -36,7 +43,27 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'question' => 'required',
+            'answer' => 'required',
+            'position' => 'required',
+        ],
+        [
+            'question.required' => 'Please enter category title',
+            'answer.required' => 'Please enter category title',
+            'position.required' => 'Please enter category title',
+        ]);
+        $data = new Faq;
+        $data->position = $request->input('position');
+        $data->question = $request->input('question');
+        $data->answer = $request->input('answer');
+        $data->status = $request->input('status');
+        $data->save();
+        $notification = array(
+            'message' => 'Faq Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -56,9 +83,10 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function edit(Faq $faq)
+    public function edit(Faq $faq, $id)
     {
-        //
+        $faq= Faq::findOrFail($id);
+        return response()->json($faq);
     }
 
     /**

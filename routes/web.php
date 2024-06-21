@@ -69,7 +69,8 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         #FAQ ROUTES
         Route::prefix('faq')->group(function (){
             Route::get('/', [FaqController::class, 'index'])->name('admin.faq');
-            Route::get('create', [FaqController::class, 'create'])->name('admin.faq.add');
+            Route::get('add', [FaqController::class, 'add'])->name('admin.faq.add');
+            Route::get('create', [FaqController::class, 'create'])->name('admin.faq.create');
             Route::post('store', [FaqController::class, 'store'])->name('admin.faq.store');
             Route::get('edit/{id}', [FaqController::class, 'edit'])->name('admin.faq.edit');
             Route::post('update/{id}', [FaqController::class, 'update'])->name('admin.faq.update');
