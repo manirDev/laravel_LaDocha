@@ -19,7 +19,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Title</th>
-                                        <th>Actions</th>
+                                        <th class="col-actions">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -32,7 +32,9 @@
                                             </td>
                                             <td>{{$item->title}}</td>
                                             <td>
-                                                <a href="" class="btn btn-danger delete-btn" data-id="{{ $item->id }}">Delete</a>
+                                                <a href="" class="delete-btn" data-id="{{ $item->id }}">
+                                                    <i class="ti-trash" style="color: #EF3737; font-size: 24px; margin-left: 25px;"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

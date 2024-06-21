@@ -27,7 +27,8 @@
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
+                                        <th class="col-gallery">Gallery</th>
+                                        <th class="col-actions">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -43,9 +44,17 @@
                                             <td>{{$item->quantity}}</td>
                                             <td>{{$item->status}}</td>
                                             <td>
-                                                <a href="{{route('admin.image.add', ['product_id'=>$item->id])}}" class="btn btn-success edit-btn" >Gallery</a>
-                                                <a href="#" class="btn btn-info edit-btn" data-id="{{ $item->id }}">Edit</a>
-                                                <a href="" class="btn btn-danger delete-btn" data-id="{{ $item->id }}">Delete</a>
+                                                <a href="{{route('admin.image.add', ['product_id'=>$item->id])}}" >
+                                                    <i class="ti-gallery" style="color: #17a2b8; font-size: 24px; margin-left: 25px;"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="edit-btn" data-id="{{ $item->id }}">
+                                                    <i class="ti-pencil-alt" style="color: #17a2b8; font-size: 24px; margin: 5px"></i>
+                                                </a>
+                                                <a href="" class="delete-btn" data-id="{{ $item->id }}">
+                                                    <i class="ti-trash" style="color: #EF3737; font-size: 24px; margin: 5px"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -131,7 +140,7 @@
                         $('#category_id').val(data.category_id);
                         $('#keywords').val(data.keywords);
                         $('#description').val(data.description);
-                        $('#detail').val(data.detail);
+                        $('.detail').val(data.detail);
                         $('#price').val(data.price);
                         $('#quantity').val(data.quantity);
                         $('#minquantity').val(data.minquantity);

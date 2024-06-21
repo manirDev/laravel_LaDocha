@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\FaqController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SettingController;
@@ -66,6 +67,17 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 
         #MESSAGES ROUTES
         #FAQ ROUTES
+        Route::prefix('faq')->group(function (){
+            Route::get('/', [FaqController::class, 'index'])->name('admin.faq');
+            Route::get('create', [FaqController::class, 'create'])->name('admin.faq.add');
+            Route::post('store', [FaqController::class, 'store'])->name('admin.faq.store');
+            Route::get('edit/{id}', [FaqController::class, 'edit'])->name('admin.faq.edit');
+            Route::post('update/{id}', [FaqController::class, 'update'])->name('admin.faq.update');
+            Route::get('delete/{id}', [FaqController::class, 'destroy'])->name('admin.faq.delete');
+            Route::get('show', [FaqController::class, 'show'])->name('admin.faq.show');
+        });
+
+
         #SETTING ROUTES
         Route::prefix('setting')->group(function (){
             Route::get('/', [SettingController::class, 'index'])->name('admin.setting');

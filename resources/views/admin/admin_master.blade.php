@@ -20,6 +20,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        #example1 {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #example1 th {
+            text-align: center;
+        }
+
+        #example1 .col-name {
+            width: 20%;
+        }
+
+        #example1 .col-description {
+            width: 40%;
+        }
+
+        #example1 .col-actions{
+            max-width: 60px !important;
+        }
+        #example1 .col-gallery{
+            max-width: 50px !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">

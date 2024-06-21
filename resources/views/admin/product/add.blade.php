@@ -75,7 +75,7 @@
                                     </div>
                                     <hr class="my-15">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <h5>Price <span class="text-danger">*</span></h5>
                                             <div class="controls">
                                                 <input type="number" name="price" id="price" class="form-control" >
@@ -84,7 +84,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <h5>Tax</h5>
                                                 <div class="controls">
@@ -92,15 +92,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <h5>Quantity</h5>
                                             <div class="controls">
                                                 <input type="number" name="quantity" id="quantity" class="form-control" >
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <h5>Min-Quantity</h5>
                                                 <div class="controls">
@@ -109,22 +107,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <h5>Description</h5>
-                                                <div class="controls">
-                                                    <textarea name="description" id="description" class="form-control" placeholder="Product description"></textarea>
-                                                </div>
-                                            </div>
+                                    <hr class="my-15">
+                                    <div class="form-group">
+                                        <h5>Description</h5>
+                                        <div class="controls">
+                                            <textarea name="description" id="description" class="form-control" placeholder="Product description"></textarea>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <h5>Detail</h5>
-                                                <div class="controls">
-                                                    <textarea name="detail" id="detail" class="form-control" placeholder="Product Details"></textarea>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h5>Detail</h5>
+                                        <div class="controls">
+                                            <textarea id="editor1" rows="10" cols="60" name="detail" class="form-control" placeholder="Product Details"></textarea>
                                         </div>
                                     </div>
 
