@@ -70,34 +70,19 @@
 @endsection
 @section('js')
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Function to handle image preview
-            function handleImagePreview(inputId, outputId) {
-                document.getElementById(inputId).addEventListener('change', function(event) {
-                    var reader = new FileReader();
-                    reader.onload = function() {
-                        var output = document.getElementById(outputId);
-                        output.src = reader.result;
-                        output.style.display = 'block';
-                        console.log("Image preview updated"); // Debugging line
-                    };
-                    reader.onerror = function() {
-                        console.error("An error occurred while reading the file");
-                    };
-                    if (event.target.files[0]) {
-                        reader.readAsDataURL(event.target.files[0]);
-                        console.log("File selected: " + event.target.files[0].name); // Debugging line
-                    } else {
-                        console.log("No file selected"); // Debugging line
-                    }
-                });
-            }
-
-            // Apply the image preview functionality to the image element
-            handleImagePreview('customFile', 'imagePreview');
-            handleImagePreview('customFile1', 'imagePreview1');
+        $('.faq-add').wysihtml5({
+            "font-styles":  true, //Font styling, e.g. h1, h2, etc
+            "color":        true, //Button to change color of font
+            "emphasis":     true, //Italics, bold, etc
+            "textAlign":    true, //Text align (left, right, center, justify)
+            "lists":        true, //(Un)ordered lists, e.g. Bullets, Numbers
+            "blockquote":   true, //Button to insert quote
+            "link":         true, //Button to insert a link
+            "table":        false, //Button to insert a table
+            "image":        false, //Button to insert an image
+            "video":        false, //Button to insert YouTube video
+            "html":         false //Button which allows you to edit the generated HTML
         });
-
         /*----------------Edit Script--------------*/
         $(document).ready(function() {
             // Initialize DataTables
@@ -125,9 +110,28 @@
                         // Update the form action and populate form fields
                         $('#editForm').attr('action', '/admin/faq/update/' + id);
                         $('#question').val(data.question);
-                        $('#answer').val(data.answer);
                         $('#position').val(data.position);
                         $('#status').val(data.status);
+
+                        // Directly set the value in the textarea and trigger change event
+                        $('#answer').val(data.answer).trigger('change');
+
+                        // Initialize wysihtml5 editor if not already initialized
+                        if (!$('#answer').data("wysihtml5")) {
+                            $('.faq-edit').wysihtml5({
+                                "font-styles":  true, //Font styling, e.g. h1, h2, etc
+                                "color":        true, //Button to change color of font
+                                "emphasis":     true, //Italics, bold, etc
+                                "textAlign":    true, //Text align (left, right, center, justify)
+                                "lists":        true, //(Un)ordered lists, e.g. Bullets, Numbers
+                                "blockquote":   true, //Button to insert quote
+                                "link":         true, //Button to insert a link
+                                "table":        false, //Button to insert a table
+                                "image":        false, //Button to insert an image
+                                "video":        false, //Button to insert YouTube video
+                                "html":         false //Button which allows you to edit the generated HTML
+                            });
+                        }
 
                         // Show the modal
                         $('#editModal').modal('show');
@@ -154,7 +158,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
-                                url: '/admin/category/delete/' + id,
+                                url: '/admin/faq/delete/' + id,
                                 method: 'DELETE',
                                 data: {
                                     _token: '{{ csrf_token() }}'
@@ -163,7 +167,7 @@
                                     if(response.success) {
                                         Swal.fire(
                                             'Deleted!',
-                                             'Category has been deleted.',
+                                             'Faq has been deleted.',
                                             'success'
                                         );
                                         // Remove the deleted row from the table
@@ -171,7 +175,7 @@
                                     } else {
                                         Swal.fire(
                                             'Error!',
-                                            'There was an error deleting the category.',
+                                            'There was an error deleting the faq.',
                                             'error'
                                         );
                                     }

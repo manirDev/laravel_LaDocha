@@ -22,7 +22,8 @@
                                 <div class="form-group">
                                     <h5>Answers</h5>
                                     <div class="controls">
-                                        <textarea name="answer" id="answer"></textarea>
+                                        <textarea name="answer" id="answer" class="faq-edit form-control" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">

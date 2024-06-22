@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <h5>Answers <span class="text-danger">*</span></h5>
                     <div class="controls">
-                        <textarea class="textarea" name="answer"></textarea>
+                        <textarea name="answer" class="faq-add form-control"></textarea>
                         @error('answer')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror

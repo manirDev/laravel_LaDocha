@@ -83,6 +83,7 @@
 @endsection
 @section('js')
     <script>
+
         document.addEventListener('DOMContentLoaded', () => {
             // Function to handle image preview
             function handleImagePreview(inputId, outputId) {
@@ -140,7 +141,7 @@
                         $('#category_id').val(data.category_id);
                         $('#keywords').val(data.keywords);
                         $('#description').val(data.description);
-                        $('.detail').val(data.detail);
+
                         $('#price').val(data.price);
                         $('#quantity').val(data.quantity);
                         $('#minquantity').val(data.minquantity);
@@ -148,6 +149,26 @@
                         $('#status').val(data.status);
                         $('#id').val(data.id);
                         $('#oldImg').val(data.image);
+
+                        // Directly set the value in the textarea and trigger change event
+                        $('#detail').val(data.detail).trigger('change');
+
+                        // Initialize wysihtml5 editor if not already initialized
+                        if (!$('#detail').data("wysihtml5")) {
+                            $('.product-edit').wysihtml5({
+                                "font-styles":  true, //Font styling, e.g. h1, h2, etc
+                                "color":        true, //Button to change color of font
+                                "emphasis":     true, //Italics, bold, etc
+                                "textAlign":    true, //Text align (left, right, center, justify)
+                                "lists":        true, //(Un)ordered lists, e.g. Bullets, Numbers
+                                "blockquote":   true, //Button to insert quote
+                                "link":         true, //Button to insert a link
+                                "table":        false, //Button to insert a table
+                                "image":        false, //Button to insert an image
+                                "video":        false, //Button to insert YouTube video
+                                "html":         false //Button which allows you to edit the generated HTML
+                            });
+                        }
 
                         // Show the category image if available
                         if (data.image) {

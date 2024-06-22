@@ -112,13 +112,13 @@
                                 <div class="form-group">
                                     <h5>Description</h5>
                                     <div class="controls">
-                                        <textarea name="description" id="description" class="form-control" placeholder="Product description"></textarea>
+                                        <textarea name="description" id="description" class="form-control" ></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5>Detail</h5>
                                     <div class="controls">
-                                        <textarea id="editor1"  name="detail" class="detail form-control" placeholder="Product detail">
+                                        <textarea id="detail"  name="detail" class="product-edit form-control">
                                         </textarea>
                                     </div>
                                 </div>

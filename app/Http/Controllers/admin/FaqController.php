@@ -49,9 +49,9 @@ class FaqController extends Controller
             'position' => 'required',
         ],
         [
-            'question.required' => 'Please enter category title',
-            'answer.required' => 'Please enter category title',
-            'position.required' => 'Please enter category title',
+            'question.required' => 'Please enter faq question',
+            'answer.required' => 'Please enter the answer',
+            'position.required' => 'Please enter a position',
         ]);
         $data = new Faq;
         $data->position = $request->input('position');
@@ -96,9 +96,19 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faq $faq)
+    public function update(Request $request, Faq $faq, $id)
     {
-        //
+        $data =  Faq::find($id);
+        $data->position = $request->input('position');
+        $data->question = $request->input('question');
+        $data->answer = $request->input('answer');
+        $data->status = $request->input('status');
+        $data->save();
+        $notification = array(
+            'message' => 'Faq Updated Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -107,8 +117,10 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq)
+    public function destroy(Faq $faq, $id)
     {
-        //
+        $faq = Faq::findOrFail($id);
+        $faq->delete();
+        return response()->json(['success' => true, 'message' => 'Faq deleted successfully.']);
     }
 }

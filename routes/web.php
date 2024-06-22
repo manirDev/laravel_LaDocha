@@ -74,7 +74,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
             Route::post('store', [FaqController::class, 'store'])->name('admin.faq.store');
             Route::get('edit/{id}', [FaqController::class, 'edit'])->name('admin.faq.edit');
             Route::post('update/{id}', [FaqController::class, 'update'])->name('admin.faq.update');
-            Route::get('delete/{id}', [FaqController::class, 'destroy'])->name('admin.faq.delete');
+            Route::delete('delete/{id}', [FaqController::class, 'destroy'])->name('admin.faq.delete');
             Route::get('show', [FaqController::class, 'show'])->name('admin.faq.show');
         });
 
