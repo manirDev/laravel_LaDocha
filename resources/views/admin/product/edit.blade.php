@@ -64,7 +64,13 @@
                                             <div class="controls">
                                                 <select name="category_id" id="category_id" required class="form-control">
                                                     @foreach($categories as $item)
-                                                        <option value={{$item->id}}>{{$item->title}}</option>
+                                                        <option value={{$item->id}}>
+                                                            @if(!is_null($item) && !is_null($item->title))
+                                                                {{\App\Http\Controllers\admin\CategoryController::getParentTree($item, $item->title)}}
+                                                            @else
+                                                                No Parent
+                                                            @endif
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 @error('category_id')

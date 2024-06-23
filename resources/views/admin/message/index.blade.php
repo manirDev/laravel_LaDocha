@@ -37,7 +37,7 @@
                                             <td>{{$item->phone}}</td>
                                             <td>{{$item->subject}}</td>
                                             <td>
-                                                <span class="badge {{ $item->status == 'Read' ? 'badge-success' : 'badge-danger' }}">
+                                                <span class="badge {{ $item->status == 'Read' ? 'badge-success-light' : 'badge-danger-light' }}">
                                                     {{ $item->status }}
                                                 </span>
                                             </td>

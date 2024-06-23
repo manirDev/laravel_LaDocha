@@ -23,4 +23,9 @@ class Product extends Model
         'slug',
         'status',
     ];
+
+    #Many to One(Child)
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

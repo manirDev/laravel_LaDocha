@@ -19,8 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->get();
-        $categories = DB::table('categories')->get();
+        $products = Product::with('category')->get();
+        $categories = Category::with('children')->get();
         return view('admin.product.index', ['products' => $products, 'categories' => $categories]);
     }
 

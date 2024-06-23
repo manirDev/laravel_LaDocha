@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\DB;
 use Image;
 class CategoryController extends Controller
 {
+
+    #getParentTree function to be reached in everywhere
+    protected $appends = ['getParentTree'];
+
+    public static function  getParentTree($category, $title){
+        if ($category->parent_id == 0) {
+            return $title;
+        }
+        $parent = Category::find($category->parent_id);
+        $title = $parent->title . ' > ' . $title;
+
+        return CategoryController::getParentTree($parent, $title);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +29,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = DB::table('categories')->get();
-        $dataList = DB::table('categories')->get()->where('parent_id', 0);
-        return view('admin.category.index', ['categories' => $categories, 'dataList' => $dataList]);
+        $categories = Category::with('children')->get();
+        return view('admin.category.index', ['categories' => $categories]);
     }
 
     /**
@@ -101,9 +113,19 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
         $category = Category::findOrFail($id);
-        return response()->json($category);
+        $categories = Category::with('children')->get(); // Fetch all categories
+
+        return response()->json([
+            'title' => $category->title,
+            'keywords' => $category->keywords,
+            'description' => $category->description,
+            'status' => $category->status,
+            'id' => $category->id,
+            'image' => $category->image,
+            'parent_id' => $category->parent_id,
+            'categories' => $categories // Include the list of categories
+        ]);
     }
 
     /**

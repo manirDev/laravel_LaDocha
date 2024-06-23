@@ -23,6 +23,7 @@
                                     <thead>
                                     <tr>
                                         <th>Image</th>
+                                        <th>Category</th>
                                         <th>Title</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
@@ -39,11 +40,18 @@
                                                 <img src="{{asset($item->image)}}" alt="" style="width: 60px; height: 60px; border-radius:5px;">
                                                 @endif
                                             </td>
+                                            <td>
+                                                @if(!is_null($item->category) && !is_null($item->category->title))
+                                                    {{\App\Http\Controllers\admin\CategoryController::getParentTree($item->category, $item->category->title)}}
+                                                @else
+                                                    No Category
+                                                @endif
+                                            </td>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->price}}</td>
                                             <td>{{$item->quantity}}</td>
                                             <td>
-                                                <span class="badge {{ $item->status == 'True' ? 'badge-success' : 'badge-danger' }}">
+                                                <span class="badge {{ $item->status == 'True' ? 'badge-success-light' : 'badge-danger-light' }}">
                                                     {{ $item->status }}
                                                 </span>
                                             </td>

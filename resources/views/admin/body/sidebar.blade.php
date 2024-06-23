@@ -114,60 +114,6 @@
                 </ul>
             </li>
 
-
-
-            <li class="treeview">
-                <a href="#">
-                    <i data-feather="hard-drive"></i>
-                    <span>Content</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="content_typography.html"><i class="ti-more"></i>Typography</a></li>
-                    <li><a href="content_media.html"><i class="ti-more"></i>Media</a></li>
-                    <li><a href="content_grid.html"><i class="ti-more"></i>Grid</a></li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i data-feather="package"></i>
-                    <span>Utilities</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="utilities_border.html"><i class="ti-more"></i>Border</a></li>
-                    <li><a href="utilities_color.html"><i class="ti-more"></i>Color</a></li>
-                    <li><a href="utilities_ribbons.html"><i class="ti-more"></i>Ribbons</a></li>
-                    <li><a href="utilities_tab.html"><i class="ti-more"></i>Tabs</a></li>
-                    <li><a href="utilities_animations.html"><i class="ti-more"></i>Animation</a></li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i data-feather="edit-2"></i>
-                    <span>Icons</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="icons_fontawesome.html"><i class="ti-more"></i>Font Awesome</a></li>
-                    <li><a href="icons_glyphicons.html"><i class="ti-more"></i>Glyphicons</a></li>
-                    <li><a href="icons_material.html"><i class="ti-more"></i>Material Icons</a></li>
-                    <li><a href="icons_themify.html"><i class="ti-more"></i>Themify Icons</a></li>
-                    <li><a href="icons_simpleline.html"><i class="ti-more"></i>Simple Line Icons</a></li>
-                    <li><a href="icons_cryptocoins.html"><i class="ti-more"></i>Cryptocoins Icons</a></li>
-                    <li><a href="icons_flag.html"><i class="ti-more"></i>Flag Icons</a></li>
-                    <li><a href="icons_weather.html"><i class="ti-more"></i>Weather Icons</a></li>
-                </ul>
-            </li>
-
         </ul>
     </section>
 

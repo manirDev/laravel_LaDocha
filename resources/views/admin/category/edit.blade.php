@@ -54,9 +54,14 @@
                                             <h5>Parent Category</h5>
                                             <div class="controls">
                                                 <select name="parent_id" id="parent_id" required class="form-control">
-                                                    <option value="0">Main Category</option>
-                                                    @foreach($dataList as $item)
-                                                        <option value={{$item->id}}>{{$item->title}}</option>
+                                                    @foreach($categories as $item)
+                                                        <option value={{$item->id}} >
+                                                            @if(!is_null($item) && !is_null($item->title))
+                                                                {{\App\Http\Controllers\admin\CategoryController::getParentTree($item, $item->title)}}
+                                                            @else
+                                                                No Parent
+                                                            @endif
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 @error('keywords')
