@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\FaqController;
 use App\Http\Controllers\admin\ImageController;
+use App\Http\Controllers\admin\MessageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\frontend\HomeController;
@@ -66,6 +67,13 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         });
 
         #MESSAGES ROUTES
+        Route::prefix('message')->group(function (){
+            Route::get('/', [MessageController::class, 'index'])->name('admin.message');
+            Route::get('edit/{id}', [MessageController::class, 'edit'])->name('admin.message.edit');
+            Route::post('update/{id}', [MessageController::class, 'update'])->name('admin.message.update');
+            Route::delete('delete/{id}', [MessageController::class, 'destroy'])->name('admin.message.delete');
+            Route::get('show', [MessageController::class, 'show'])->name('admin.message.show');
+        });
         #FAQ ROUTES
         Route::prefix('faq')->group(function (){
             Route::get('/', [FaqController::class, 'index'])->name('admin.faq');

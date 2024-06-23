@@ -1,15 +1,19 @@
 @extends('admin.admin_master')
 
+@section('css')
+
+@endSection
+
 @section('admin')
     <div class="container-full">
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-8">
+                <div class="col-12">
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Category List</h3>
+                            <h3 class="box-title">Message List</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -17,34 +21,32 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Image</th>
-                                        <th>Title</th>
-                                        <th>Description</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Subject</th>
                                         <th>Status</th>
-                                        <th class="col-actions">Actions</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $item)
+                                    @foreach($messages as $item)
                                         <tr>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->email}}</td>
+                                            <td>{{$item->phone}}</td>
+                                            <td>{{$item->subject}}</td>
                                             <td>
-                                                @if($item->image)
-                                                <img src="{{asset($item->image)}}" alt="" style="width: 60px; height: 60px; border-radius:5px;">
-                                                @endif
-                                            </td>
-                                            <td>{{$item->title}}</td>
-                                            <td>{{$item->description}}</td>
-                                            <td>
-                                                <span class="badge {{ $item->status == 'True' ? 'badge-success' : 'badge-danger' }}">
+                                                <span class="badge {{ $item->status == 'Read' ? 'badge-success' : 'badge-danger' }}">
                                                     {{ $item->status }}
                                                 </span>
                                             </td>
                                             <td>
                                                 <a href="#" class="edit-btn" data-id="{{ $item->id }}">
-                                                    <i class="ti-pencil-alt" style="color: #17a2b8; font-size: 24px; margin: 5px"></i>
+                                                    <i class="ti-pencil-alt" style="color: #17a2b8; font-size: 24px;"></i>
                                                 </a>
                                                 <a href="" class="delete-btn" data-id="{{ $item->id }}">
-                                                    <i class="ti-trash" style="color: #EF3737; font-size: 24px; margin: 5px"></i>
+                                                    <i class="ti-trash" style="color: #EF3737; font-size: 24px;"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -58,17 +60,11 @@
                     <!-- /.box -->
                 </div>
                 <!-- /.col -->
-
-                <div class="col-4">
-                    @include('admin.category.add')
-                </div>
-                <!-- /.col -->
-
             </div>
 
             <!-- Modal -->
             <div class="modal fade bs-example-modal-lg" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                @include('admin.category.edit')
+                @include('admin.message.edit')
             </div>
             <!-- /.modal -->
             <!-- /.row -->
@@ -80,34 +76,6 @@
 @endsection
 @section('js')
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Function to handle image preview
-            function handleImagePreview(inputId, outputId) {
-                document.getElementById(inputId).addEventListener('change', function(event) {
-                    var reader = new FileReader();
-                    reader.onload = function() {
-                        var output = document.getElementById(outputId);
-                        output.src = reader.result;
-                        output.style.display = 'block';
-                        console.log("Image preview updated"); // Debugging line
-                    };
-                    reader.onerror = function() {
-                        console.error("An error occurred while reading the file");
-                    };
-                    if (event.target.files[0]) {
-                        reader.readAsDataURL(event.target.files[0]);
-                        console.log("File selected: " + event.target.files[0].name); // Debugging line
-                    } else {
-                        console.log("No file selected"); // Debugging line
-                    }
-                });
-            }
-
-            // Apply the image preview functionality to the image element
-            handleImagePreview('customFile', 'imagePreview');
-            handleImagePreview('customFile1', 'imagePreview1');
-        });
-
         /*----------------Edit Script--------------*/
         $(document).ready(function() {
             // Initialize DataTables
@@ -129,29 +97,18 @@
 
                 // Fetch the record data via AJAX
                 $.ajax({
-                    url: '/admin/category/edit/' + id,
+                    url: '/admin/message/edit/' + id,
                     method: 'GET',
                     success: function(data) {
                         // Update the form action and populate form fields
-                        $('#editForm').attr('action', '/admin/category/update/' + id);
-                        $('#title').val(data.title);
-                        $('#keywords').val(data.keywords);
-                        $('#description').val(data.description);
-                        $('#parent_id').val(data.parent_id);
-                        $('#status').val(data.status);
-                        $('#id').val(data.id);
-                        $('#oldImg').val(data.image);
-
-                        // Show the category image if available
-                        if (data.image) {
-                            $('#categoryImage').attr('src', "{{ asset('') }}" + data.image).css('display', 'inline-block');
-                        } else {
-                            $('#categoryImage').hide();
-                        }
-
-                        // Set the modal title and category name
-                        $('#categoryTitle').text(data.title);
-                        $('#categoryName').text(data.title);
+                        $('#editForm').attr('action', '/admin/message/update/' + id);
+                        $('#id').text(data.id);
+                        $('#name').text(data.name);
+                        $('#email').text(data.email);
+                        $('#phone').text(data.phone);
+                        $('#subject').text(data.subject);
+                        $('#note').val(data.note);
+                        $('#message').text(data.message);
 
                         // Show the modal
                         $('#editModal').modal('show');
@@ -178,7 +135,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
-                                url: '/admin/category/delete/' + id,
+                                url: '/admin/message/delete/' + id,
                                 method: 'DELETE',
                                 data: {
                                     _token: '{{ csrf_token() }}'
@@ -187,7 +144,7 @@
                                     if(response.success) {
                                         Swal.fire(
                                             'Deleted!',
-                                             'Category has been deleted.',
+                                             'Message has been deleted.',
                                             'success'
                                         );
                                         // Remove the deleted row from the table
@@ -195,7 +152,7 @@
                                     } else {
                                         Swal.fire(
                                             'Error!',
-                                            'There was an error deleting the category.',
+                                            'There was an error deleting the message.',
                                             'error'
                                         );
                                     }

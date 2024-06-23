@@ -84,7 +84,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ ($prefix == '/message') ? 'active' : '' }}">
                 <a href="#">
                     <i class="ti-email"></i>
                     <span>Messages</span>
@@ -93,8 +93,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li >
-                        <a href="#"><i class="ti-more"></i>All Messages</a>
+                    <li class="{{ ($route == 'admin.message') ? 'active' : '' }}">
+                        <a href="{{route('admin.message')}}"><i class="ti-more"></i>All Messages</a>
                     </li>
                 </ul>
             </li>

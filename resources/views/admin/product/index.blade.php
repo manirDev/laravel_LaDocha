@@ -42,7 +42,11 @@
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->price}}</td>
                                             <td>{{$item->quantity}}</td>
-                                            <td>{{$item->status}}</td>
+                                            <td>
+                                                <span class="badge {{ $item->status == 'True' ? 'badge-success' : 'badge-danger' }}">
+                                                    {{ $item->status }}
+                                                </span>
+                                            </td>
                                             <td>
                                                 <a href="{{route('admin.image.add', ['product_id'=>$item->id])}}" >
                                                     <i class="ti-gallery" style="color: #17a2b8; font-size: 24px; margin-left: 25px;"></i>
