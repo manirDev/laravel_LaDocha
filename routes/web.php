@@ -6,9 +6,11 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\FaqController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\MessageController;
+use App\Http\Controllers\admin\OpenAIController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\ProductPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 /*---------------------FRONTEND PAGES ROUTES START--------------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/product/{productID}/{slug}', [ProductPageController::class, 'index'])->name('product.detail.page');
 
 /*---------------------FRONTEND PAGES ROUTES END--------------------------------------*/
 
@@ -93,6 +96,10 @@ Route::middleware('auth')->prefix('admin')->group(function(){
             Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
         });
 
+
+        #openAI
+        Route::get('/open-ai', [OpenAIController::class, 'index'])->name('admin.open-ai');
+        Route::post('/generate-product-details', [OpenAIController::class, 'generateProductDetails'])->name('admin.openAi.gen');
 
     });//admin role ends
 
