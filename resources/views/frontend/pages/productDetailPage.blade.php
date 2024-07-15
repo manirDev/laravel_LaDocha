@@ -21,45 +21,11 @@
                         <!-- ============================================== HOT DEALS: END ============================================== -->
 
                         <!-- ============================================== NEWSLETTER ============================================== -->
-                        <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
-                            <h3 class="section-title">Newsletters</h3>
-                            <div class="sidebar-widget-body outer-top-xs">
-                                <p>Sign Up for Our Newsletter!</p>
-                                <form>
-                                    <div class="form-group">
-                                        <label class="sr-only" for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Subscribe to our newsletter">
-                                    </div>
-                                    <button class="btn btn-primary">Subscribe</button>
-                                </form>
-                            </div><!-- /.sidebar-widget-body -->
-                        </div><!-- /.sidebar-widget -->
+                        @include('frontend.widgets.newsLetter')
                         <!-- ============================================== NEWSLETTER: END ============================================== -->
 
                         <!-- ============================================== Testimonials============================================== -->
-                        <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-                            <div id="advertisement" class="advertisement">
-                                <div class="item">
-                                    <div class="avatar"><img src="assets/images/testimonials/member1.png" alt="Image"></div>
-                                    <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                                    <div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
-                                </div><!-- /.item -->
-
-                                <div class="item">
-                                    <div class="avatar"><img src="assets/images/testimonials/member3.png" alt="Image"></div>
-                                    <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                                    <div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>
-                                </div><!-- /.item -->
-
-                                <div class="item">
-                                    <div class="avatar"><img src="assets/images/testimonials/member2.png" alt="Image"></div>
-                                    <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                                    <div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
-                                </div><!-- /.item -->
-
-                            </div><!-- /.owl-carousel -->
-                        </div>
-
+                        @include('frontend.widgets.testimonial')
                         <!-- ============================================== Testimonials: END ============================================== -->
                     </div>
                 </div><!-- /.sidebar -->
@@ -72,56 +38,74 @@
 
                                     <div id="owl-single-product">
                                         <div class="single-product-gallery-item" id="slide1">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="{{asset($product->image)}}">
-                                                <img class="img-responsive" alt="" src="{{asset($product->image)}}" data-echo="{{asset($product->image)}}" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="{{asset($product->image)}}">
+                                                <img class="img-responsive" alt="" src="{{asset($product->image)}}"
+                                                     data-echo="{{asset($product->image)}}"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide2">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p9.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p9.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p9.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p9.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide3">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p10.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p10.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p10.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p10.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide4">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p11.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p11.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p11.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p11.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide5">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p12.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p12.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p12.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p12.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide6">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p13.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p13.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p13.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p13.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide7">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p14.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p14.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p14.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p14.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide8">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p15.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p15.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p15.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p15.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
                                         <div class="single-product-gallery-item" id="slide9">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p16.jpg">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p16.jpg" />
+                                            <a data-lightbox="image-1" data-title="Gallery"
+                                               href="assets/images/products/p16.jpg">
+                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
+                                                     data-echo="assets/images/products/p16.jpg"/>
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
 
@@ -132,60 +116,86 @@
 
                                         <div id="owl-single-product-thumbnails">
                                             <div class="item">
-                                                <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide1">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p17.jpg" />
+                                                <a class="horizontal-thumb active" data-target="#owl-single-product"
+                                                   data-slide="1" href="#slide1">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p17.jpg"/>
                                                 </a>
                                             </div>
 
                                             <div class="item">
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide2">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p18.jpg"/>
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="2" href="#slide2">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p18.jpg"/>
                                                 </a>
                                             </div>
                                             <div class="item">
 
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="3" href="#slide3">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p19.jpg" />
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="3" href="#slide3">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p19.jpg"/>
                                                 </a>
                                             </div>
                                             <div class="item">
 
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="4" href="#slide4">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p20.jpg" />
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="4" href="#slide4">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p20.jpg"/>
                                                 </a>
                                             </div>
                                             <div class="item">
 
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="5" href="#slide5">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p21.jpg" />
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="5" href="#slide5">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p21.jpg"/>
                                                 </a>
                                             </div>
                                             <div class="item">
 
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="6" href="#slide6">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p22.jpg" />
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="6" href="#slide6">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p22.jpg"/>
                                                 </a>
                                             </div>
                                             <div class="item">
 
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="7" href="#slide7">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p23.jpg" />
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="7" href="#slide7">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p23.jpg"/>
                                                 </a>
                                             </div>
                                             <div class="item">
 
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="8" href="#slide8">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p24.jpg" />
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="8" href="#slide8">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p24.jpg"/>
                                                 </a>
                                             </div>
                                             <div class="item">
 
-                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="9" href="#slide9">
-                                                    <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p25.jpg" />
+                                                <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                   data-slide="9" href="#slide9">
+                                                    <img class="img-responsive" width="85" alt=""
+                                                         src="assets/images/blank.gif"
+                                                         data-echo="assets/images/products/p25.jpg"/>
                                                 </a>
                                             </div>
                                         </div><!-- /#owl-single-product-thumbnails -->
-
 
 
                                     </div><!-- /.gallery-thumbs -->
@@ -241,13 +251,16 @@
 
                                             <div class="col-sm-6">
                                                 <div class="favorite-button m-t-10">
-                                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#">
+                                                    <a class="btn btn-primary" data-toggle="tooltip"
+                                                       data-placement="right" title="Wishlist" href="#">
                                                         <i class="fa fa-heart"></i>
                                                     </a>
-                                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
+                                                    <a class="btn btn-primary" data-toggle="tooltip"
+                                                       data-placement="right" title="Add to Compare" href="#">
                                                         <i class="fa fa-signal"></i>
                                                     </a>
-                                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail" href="#">
+                                                    <a class="btn btn-primary" data-toggle="tooltip"
+                                                       data-placement="right" title="E-mail" href="#">
                                                         <i class="fa fa-envelope"></i>
                                                     </a>
                                                 </div>
@@ -267,8 +280,10 @@
                                                 <div class="cart-quantity">
                                                     <div class="quant-input">
                                                         <div class="arrows">
-                                                            <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-                                                            <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
+                                                            <div class="arrow plus gradient"><span class="ir"><i
+                                                                        class="icon fa fa-sort-asc"></i></span></div>
+                                                            <div class="arrow minus gradient"><span class="ir"><i
+                                                                        class="icon fa fa-sort-desc"></i></span></div>
                                                         </div>
                                                         <input type="text" value="1">
                                                     </div>
@@ -276,16 +291,13 @@
                                             </div>
 
                                             <div class="col-sm-7">
-                                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+                                                <a href="#" class="btn btn-primary"><i
+                                                        class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
                                             </div>
 
 
                                         </div><!-- /.row -->
                                     </div><!-- /.quantity-container -->
-
-
-
-
 
 
                                 </div><!-- /.product-info -->
@@ -314,104 +326,7 @@
                                         </div>
                                     </div><!-- /.tab-pane -->
 
-                                    <div id="review" class="tab-pane">
-                                        <div class="product-tab">
-
-                                            <div class="product-reviews">
-                                                <h4 class="title">Customer Reviews</h4>
-
-                                                <div class="reviews">
-                                                    <div class="review">
-                                                        <div class="review-title"><span class="summary">We love this product</span><span class="date"><i class="fa fa-calendar"></i><span>1 days ago</span></span></div>
-                                                        <div class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam suscipit."</div>
-                                                    </div>
-
-                                                </div><!-- /.reviews -->
-                                            </div><!-- /.product-reviews -->
-
-
-
-                                            <div class="product-add-review">
-                                                <h4 class="title">Write your own review</h4>
-                                                <div class="review-table">
-                                                    <div class="table-responsive">
-                                                        <table class="table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th class="cell-label">&nbsp;</th>
-                                                                <th>1 star</th>
-                                                                <th>2 stars</th>
-                                                                <th>3 stars</th>
-                                                                <th>4 stars</th>
-                                                                <th>5 stars</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td class="cell-label">Quality</td>
-                                                                <td><input type="radio" name="quality" class="radio" value="1"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="2"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="3"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="4"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="5"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="cell-label">Price</td>
-                                                                <td><input type="radio" name="quality" class="radio" value="1"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="2"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="3"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="4"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="5"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="cell-label">Value</td>
-                                                                <td><input type="radio" name="quality" class="radio" value="1"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="2"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="3"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="4"></td>
-                                                                <td><input type="radio" name="quality" class="radio" value="5"></td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table><!-- /.table .table-bordered -->
-                                                    </div><!-- /.table-responsive -->
-                                                </div><!-- /.review-table -->
-
-                                                <div class="review-form">
-                                                    <div class="form-container">
-                                                        <form role="form" class="cnt-form">
-
-                                                            <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputName">Your Name <span class="astk">*</span></label>
-                                                                        <input type="text" class="form-control txt" id="exampleInputName" placeholder="">
-                                                                    </div><!-- /.form-group -->
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputSummary">Summary <span class="astk">*</span></label>
-                                                                        <input type="text" class="form-control txt" id="exampleInputSummary" placeholder="">
-                                                                    </div><!-- /.form-group -->
-                                                                </div>
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputReview">Review <span class="astk">*</span></label>
-                                                                        <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
-                                                                    </div><!-- /.form-group -->
-                                                                </div>
-                                                            </div><!-- /.row -->
-
-                                                            <div class="action text-right">
-                                                                <button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
-                                                            </div><!-- /.action -->
-
-                                                        </form><!-- /.cnt-form -->
-                                                    </div><!-- /.form-container -->
-                                                </div><!-- /.review-form -->
-
-                                            </div><!-- /.product-add-review -->
-
-                                        </div><!-- /.product-tab -->
-                                    </div><!-- /.tab-pane -->
+                                    @include('frontend.components.productReview')
 
                                     <div id="tags" class="tab-pane">
                                         <div class="product-tag">
@@ -422,12 +337,14 @@
 
                                                     <div class="form-group">
                                                         <label for="exampleInputTag">Add Your Tags: </label>
-                                                        <input type="email" id="exampleInputTag" class="form-control txt">
+                                                        <input type="email" id="exampleInputTag"
+                                                               class="form-control txt">
 
 
                                                     </div>
 
-                                                    <button class="btn btn-upper btn-primary" type="submit">ADD TAGS</button>
+                                                    <button class="btn btn-upper btn-primary" type="submit">ADD TAGS
+                                                    </button>
                                                 </div><!-- /.form-container -->
                                             </form><!-- /.form-cnt -->
 
@@ -447,12 +364,11 @@
                     </div><!-- /.product-tabs -->
 
                     <!-- ============================================== UPSELL PRODUCTS ============================================== -->
-                        @include('frontend.components.upSellProduct')
+                    @include('frontend.components.upSellProduct')
                     <!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
 
                 </div><!-- /.col -->
                 <div class="clearfix"></div>
             </div><!-- /.row -->
-
 
 @endsection
