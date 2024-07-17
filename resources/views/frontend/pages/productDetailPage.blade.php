@@ -1,16 +1,13 @@
+@php
+    $setting = \App\Http\Controllers\Frontend\HomeController::getSetting();
+@endphp
 @extends('frontend.main_master')
+@section('description', $setting->description)
+@section('keywords', $setting->keywords)
+@section('title', $setting->title)
 
 @section('main-section')
-    <div class="breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-inner">
-                <ul class="list-inline list-unstyled">
-                    <li><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="{{route('home')}}">{{$product->category->title}}</a></li>
-                </ul>
-            </div><!-- /.breadcrumb-inner -->
-        </div><!-- /.container -->
-    </div><!-- /.breadcrumb -->
+    @include('frontend.widgets.breadcrumb', ['pageName' => $product->category->title])
     <div class="body-content outer-top-xs">
         <div class='container'>
             <div class='row single-product'>

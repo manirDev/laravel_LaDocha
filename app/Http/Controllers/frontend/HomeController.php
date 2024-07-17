@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Image;
@@ -13,11 +14,17 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+
+    #getParentTree function to be reached in everywhere
+    protected $appends = ['getSetting'];
+    public static function getSetting(){
+        $setting = Setting::select('id','title', 'company', 'email', 'description', 'phone',
+                                            'address', 'keywords', 'facebook', 'instagram',
+                                            'twitter', 'youtube', 'fax')->first();
+        return $setting;
+    }
     public static function categoryList(){
         return Category::where('parent_id',0)->with('children')->get();
-    }
-    public static function getSetting(){
-        return $setting = Setting::first();
     }
 
     function getLatestProductsByCategory($categoryName, $limit)

@@ -1,14 +1,17 @@
+@php
+    $setting = \App\Http\Controllers\Frontend\HomeController::getSetting();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="description" content="@yield('description')">
+    <meta name="author" content="@yield('author')">
+    <meta name="keywords" content="@yield('keywords')">
     <meta name="robots" content="all">
-    <title>Flipmart premium HTML5 & CSS3 Template</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href=" {{asset('frontend')}}/assets/css/bootstrap.min.css">

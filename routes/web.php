@@ -9,8 +9,13 @@ use App\Http\Controllers\admin\MessageController;
 use App\Http\Controllers\admin\OpenAIController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\frontend\AboutUsController;
+use App\Http\Controllers\frontend\CategoryPageController;
+use App\Http\Controllers\frontend\ContactController;
+use App\Http\Controllers\frontend\FaqPageController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductPageController;
+use App\Http\Controllers\frontend\ReferenceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +31,12 @@ use Illuminate\Support\Facades\Route;
 
 /*---------------------FRONTEND PAGES ROUTES START--------------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/aboutus', [AboutUsController::class, 'index'])->name('aboutus');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/sendMessage', [ContactController::class, 'store'])->name('message.store');
+Route::get('/reference', [ReferenceController::class, 'index'])->name('reference');
+Route::get('/faq', [FaqPageController::class, 'index'])->name('faq');
+Route::get('/category/{categoryID}/{slug}', [CategoryPageController::class, 'index'])->name('category.detail.page');
 Route::get('/product/{productID}/{slug}', [ProductPageController::class, 'index'])->name('product.detail.page');
 
 /*---------------------FRONTEND PAGES ROUTES END--------------------------------------*/

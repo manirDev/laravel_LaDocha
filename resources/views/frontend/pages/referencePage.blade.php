@@ -7,5 +7,5 @@
 @section('title', $setting->title)
 
 @section('main-section')
-
+    {!! $data->references !!}
 @endsection
