@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryPageController extends Controller
@@ -13,9 +14,19 @@ class CategoryPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($categoryID, $slug)
     {
-        //
+        $products = Product::where('category_id',$categoryID)->latest()->inRandomOrder('1234')->paginate(12);
+        $bigSale = Product::where('category_id',$categoryID)->latest()->limit(1)->inRandomOrder()->get();
+        $category = Category::find($categoryID);
+
+        $data = [
+            'products' => $products,
+            'category' => $category,
+            'bigSale' => $bigSale,
+        ];
+
+        return view('frontend.pages.categoryPage', $data);
     }
 
     /**

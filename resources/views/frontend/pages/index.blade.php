@@ -1,5 +1,6 @@
 @php
     $setting = \App\Http\Controllers\Frontend\HomeController::getSetting();
+    $tags = \App\Http\Controllers\Frontend\HomeController::getTag();
 @endphp
 @extends('frontend.main_master')
 @section('description', $setting->description)

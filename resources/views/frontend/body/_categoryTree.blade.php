@@ -9,7 +9,7 @@
                     @if($subCategory->image)
                         <img src="{{asset($subCategory->image)}}" alt="" style="width: 30px; height: 30px; border-radius:5px;">
                     @endif
-                    <a href="#"> {{$subCategory->title}}</a>
+                    <a href="{{route('category.detail.page', ['categoryID' => $subCategory->id, 'slug' => $subCategory->slug])}}"> {{$subCategory->title}}</a>
                 </li>
             </ul>
         @endif

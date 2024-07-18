@@ -9,7 +9,8 @@
 
             @foreach($parentCategories as $item)
             <li class="dropdown menu-item">
-                <a href="#" class="dropdown-toggle" @if(count($item->children)) data-toggle="dropdown" @endif ><i class="icon fa fa-shopping-bag" aria-hidden="true"></i>{{$item->title}}</a>
+                <a href="{{route('category.detail.page', ['categoryID' => $item->id, 'slug' => $item->slug])}}"
+                   class="dropdown-toggle" @if(count($item->children)) data-toggle="dropdown" @endif ><i class="icon fa fa-shopping-bag" aria-hidden="true"></i>{{$item->title}}</a>
                 <ul class="dropdown-menu mega-menu">
                     <li class="yamm-content">
                         <div class="row">

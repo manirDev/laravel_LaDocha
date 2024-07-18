@@ -16,12 +16,16 @@ class HomeController extends Controller
 {
 
     #getParentTree function to be reached in everywhere
-    protected $appends = ['getSetting'];
+    protected $appends = ['getSetting', 'getTag'];
     public static function getSetting(){
         $setting = Setting::select('id','title', 'company', 'email', 'description', 'phone',
                                             'address', 'keywords', 'facebook', 'instagram',
                                             'twitter', 'youtube', 'fax')->first();
         return $setting;
+    }
+    public static function getTag(){
+        $tags = Product::select('slug')->latest()->limit(5)->inRandomOrder()->get();
+        return $tags;
     }
     public static function categoryList(){
         return Category::where('parent_id',0)->with('children')->get();
@@ -60,7 +64,6 @@ class HomeController extends Controller
         $specialDeal = Product::select('id', 'title', 'image', 'description', 'price', 'slug')->latest()->limit(6)->inRandomOrder()->get();
         $specialOffer = Product::select('id', 'title', 'image', 'description', 'price', 'slug')->latest()->limit(6)->inRandomOrder()->get();
         $hotDeal = Product::select('id', 'title', 'image', 'description', 'price', 'slug')->latest()->limit(3)->inRandomOrder()->get();
-        $tags = Product::select('slug')->latest()->limit(10)->inRandomOrder()->get();
         $hero = Product::select('id', 'title', 'image', 'description', 'price', 'slug')->latest()->limit(3)->get();
         $menFashion = Product::select('id', 'slug', 'image')->latest()->first();
         $womenFashion = Product::select('id', 'category_id', 'image', 'slug')->latest()->limit(2)->get();
@@ -77,7 +80,6 @@ class HomeController extends Controller
             'specialDeal'=>$specialDeal,
             'specialOffer'=>$specialOffer,
             'hotDeal'=>$hotDeal,
-            'tags'=>$tags,
             'hero'=>$hero,
             'menFashion'=>$menFashion,
             'womenFashion'=>$womenFashion,
