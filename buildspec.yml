@@ -2,15 +2,15 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      php: 8.3.7
     commands:
+      - echo "Installing PHP 8.1 ..."
       - apt-get update -y
+      - apt-get install -y software-properties-common
+      - add-apt-repository -y ppa:ondrej/php
+      - apt-get update -y
+      - apt-get install -y php8.1 php8.1-pgsql php8.1-zip php8.1-xml php8.1-mbstring
       - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
       - apt-get install -y libpq-dev libzip-dev
-      - apt-get install -y php-pgsql
-      - curl -sS https://getcomposer.org/installer -o composer-setup.php
-      - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
   pre_build:
     commands:
       - composer install
