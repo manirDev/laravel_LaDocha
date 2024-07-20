@@ -16,6 +16,7 @@ use App\Http\Controllers\frontend\FaqPageController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductPageController;
 use App\Http\Controllers\frontend\ReferenceController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/run-migration', function (){
+    Artisan::call('migrate');
+    Artisan::call('db:seed');
+
+    return "Migration executed successfully";
+});
 
 /*---------------------FRONTEND PAGES ROUTES START--------------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
