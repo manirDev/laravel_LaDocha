@@ -15,11 +15,6 @@ phases:
     commands:
       - composer install
       - npm install
-  build:
-    commands:
-      - echo "Running migrations and seeding..."
-      - php artisan migrate --force
-      - php artisan db:seed --force
 artifacts:
   files:
     - '**/*'
