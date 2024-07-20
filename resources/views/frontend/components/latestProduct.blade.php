@@ -17,7 +17,12 @@
             <div class="product-slider">
                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
                     @foreach($All_latest as $item)
-                        @include('frontend.components._carousel', ['item' => $item])
+                        <div class="item item-carousel">
+                            <div class="products">
+                                @include('frontend.widgets.product_card', ['item' => $item])
+                            </div>
+                            <!-- /.products -->
+                        </div>
                     @endforeach
                     <!-- /.item -->
                 </div>

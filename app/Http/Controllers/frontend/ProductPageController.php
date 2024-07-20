@@ -12,7 +12,7 @@ class ProductPageController extends Controller
     //
     public function index($productID, $slug){
         $product = Product::find($productID);
-        $slider = Image::where('product_id',$productID);
+        $slider = Image::select('id', 'image')->where('product_id',$productID)->get();
 
         //$reviews = Review::where('content_id', $id)->latest()->paginate(3);
         //dd($product);
