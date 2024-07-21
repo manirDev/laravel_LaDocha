@@ -31,8 +31,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/run-migration', function (){
-    Artisan::call('migrate', ['--force' => true]);
-    Artisan::call('db:seed', ['--force' => true]);
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
 
     return "Migration executed successfully";
 });

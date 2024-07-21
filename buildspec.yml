@@ -3,18 +3,20 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing PHP 8.1 ..."
       - apt-get update -y
-      - apt-get install -y software-properties-common
-      - add-apt-repository -y ppa:ondrej/php
-      - apt-get update -y
-      - apt-get install -y php8.1 php8.1-pgsql php8.1-zip php8.1-xml php8.1-mbstring
-      - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
       - apt-get install -y libpq-dev libzip-dev
-  pre_build:
-    commands:
-      - composer install
-      - npm install
+      - apt-get install -y php-pgsql
+      - curl -sS <https://getcomposer.org/installer> | php -- --install-dir=/usr/local/bin --filename=composer
+    pre_build:
+      commands:
+        - cp .env.staging .env
+        - composer install
+        - npm install
+    build:
+      commands:
+        - npm run production
+        - php artisan migrate --force
+        - php artisan db:seed
 artifacts:
   files:
     - '**/*'
