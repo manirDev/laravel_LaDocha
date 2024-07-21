@@ -13,14 +13,9 @@ phases:
       - apt-get install -y libpq-dev libzip-dev
   pre_build:
     commands:
-      - cp .env.staging .env
       - composer install
       - npm install
-  build:
-    commands:
-      - npm run production
-      - php artisan migrate --force
-      - php artisan db:seed
+
 artifacts:
   files:
     - '**/*'
