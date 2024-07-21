@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => array_key_exists('APP_ENV', $_SERVER) ? $_SERVER['APP_ENV'] : env('APP_ENV'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => array_key_exists('APP_DEBUG', $_SERVER) ? ($_SERVER['APP_DEBUG'] === 'false' ? false : true) :  env('APP_DEBUG'),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => array_key_exists('APP_KEY', $_SERVER) ? $_SERVER['APP_KEY'] : env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 
