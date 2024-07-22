@@ -30,12 +30,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/run-migration', function (){
-    Artisan::call('migrate:fresh');
-    Artisan::call('db:seed');
-
-    return "Migration executed successfully";
-});
+//Route::get('/run-migration', function (){
+//    Artisan::call('migrate:fresh');
+//    Artisan::call('db:seed');
+//
+//    return "Migration executed successfully";
+//});
 
 /*---------------------FRONTEND PAGES ROUTES START--------------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');

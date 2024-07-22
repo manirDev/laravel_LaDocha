@@ -1,5 +1,5 @@
 @php
-    $setting = \App\Http\Controllers\Frontend\HomeController::getSetting();
+    $setting = \App\Http\Controllers\frontend\HomeController::getSetting();
 @endphp
 @extends('frontend.main_master')
 @section('description', $setting->description)

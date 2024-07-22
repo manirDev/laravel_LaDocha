@@ -6,7 +6,7 @@
                 <div class="products">
                     <div class="hot-deal-wrapper">
                         <div class="image">
-                            <a href="detail.html">
+                            <a href="{{route('product.detail.page', ['productID'=>$item->id, 'slug'=>$item->slug])}}">
                                 <img
                                     src="{{asset($item->image)}}"
                                     alt="">
