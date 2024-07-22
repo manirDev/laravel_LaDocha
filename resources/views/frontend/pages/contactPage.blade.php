@@ -143,5 +143,5 @@
                 </div><!-- /.logo-slider-inner -->
 
             </div><!-- /.logo-slider -->
-    {!! $data->contact !!}
+
 @endsection

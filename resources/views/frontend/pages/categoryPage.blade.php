@@ -217,7 +217,7 @@
                             @include('frontend.widgets.tags')
                             <!-- /.sidebar-widget -->
                             <!----------- Testimonials------------->
-                            @include('frontend.widgets.testimonial')
+{{--                            @include('frontend.widgets.testimonial')--}}
                             <!-- ============================================== Testimonials: END ============================================== -->
                         </div>
                         <!-- /.sidebar-filter -->
@@ -230,7 +230,9 @@
 
                     <div id="category" class="category-carousel hidden-xs">
                         <div class="item">
-                            <div class="image"> <img src="{{asset($category->image)}}" alt="" class="img-responsive"> </div>
+                            <div class="image">
+                                <img src="{{asset($category->image)}}" alt=""  width="848" height="301">
+                            </div>
                             <div class="container-fluid">
                                 <div class="caption vertical-top text-left">
                                     <div class="big-text"> Big Sale </div>

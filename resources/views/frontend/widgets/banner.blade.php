@@ -1,6 +1,6 @@
 <div class="banner cnt-strip">
     <div class="image">
-        <img class="img-responsive"  src="{{asset($item->image)}}" alt="" style="width: fit-content">
+        <img  src="{{asset($item->image)}}" alt="" @if($categoryTitle=='Men') width="848" height="201" @else class="img-responsive" @endif>
     </div>
     <div class="strip strip-text">
         <div class="strip-inner">
